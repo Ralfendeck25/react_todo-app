@@ -1,4 +1,4 @@
-// label control
+// TodoItem.tsx
 import React, { useState } from 'react';
 import { Todo, useTodos } from '../context/TodosContext';
 
@@ -25,8 +25,8 @@ export const TodoItem: React.FC<Props> = ({ todo }) => {
 
   const handleKeyUp = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
-      setIsEditing(false);
-      setEditTitle(todo.title);  // Reset to original title
+      setIsEditing(false);           // ✅ Sai do modo de edição
+      setEditTitle(todo.title);      // ✅ Restaura o título original
     }
   };
 
@@ -66,7 +66,10 @@ export const TodoItem: React.FC<Props> = ({ todo }) => {
           <span
             data-cy="TodoTitle"
             className="todo__title"
-            onDoubleClick={() => setIsEditing(true)}
+            onDoubleClick={() => {
+              setIsEditing(true);
+              setEditTitle(todo.title); // Garante que o valor editável esteja atualizado
+            }}
           >
             {todo.title}
           </span>
