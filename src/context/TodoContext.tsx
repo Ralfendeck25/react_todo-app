@@ -16,3 +16,5 @@ export const TodosContext = createContext<TodosContextType>(defaultContext);
 export const useTodos = () => {
   return useContext(TodosContext);
 };
+export type { Todo };
+

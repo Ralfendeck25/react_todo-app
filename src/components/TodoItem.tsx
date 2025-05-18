@@ -1,6 +1,6 @@
 // TodoItem.tsx
 import React, { useState } from 'react';
-import { Todo, useTodos } from '../context/TodosContext';
+import { Todo, useTodos } from '../context/TodoContext';
 
 type Props = {
   todo: Todo;
