@@ -1,3 +1,4 @@
+
 import React, { useMemo, useState } from 'react';
 import { Footer } from './components/Footer';
 import { TodoList } from './components/TodoList';
@@ -9,18 +10,20 @@ export const App: React.FC = () => {
   const [filteredBy, setFilteredBy] = useState(FilterType.All);
   const { todos } = useTodos();
 
-  const areAllCompleted = todos.length > 0 && todos.every(todo => todo.completed);
+  const areAllCompleted =
+    todos.length > 0 && todos.every(todo => todo.completed);
 
   const filteredTodos = useMemo(() => {
     return todos.filter(todo => {
       switch (filteredBy) {
+        case FilterType.All:
+          return true;
+
         case FilterType.Active:
           return !todo.completed;
+
         case FilterType.Completed:
           return todo.completed;
-        case FilterType.All:
-        default:
-          return true;
       }
     });
   }, [filteredBy, todos]);
