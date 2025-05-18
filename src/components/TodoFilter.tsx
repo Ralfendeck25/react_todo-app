@@ -9,7 +9,7 @@ type Props = {
 
 export const TodoFilter: React.FC<Props> = ({ currentFilter, onChange }) => {
   return (
-    <nav className="filter" data-cy="Filter" aria-label="Todo filters">
+    <nav className="filter" data-cy="Filter">
       {Object.values(FilterType).map(type => (
         <a
           key={type}
@@ -18,11 +18,7 @@ export const TodoFilter: React.FC<Props> = ({ currentFilter, onChange }) => {
             selected: currentFilter === type,
           })}
           data-cy={`FilterLink${type}`}
-          aria-current={currentFilter === type ? 'page' : undefined}
-          onClick={e => {
-            e.preventDefault();
-            onChange(type);
-          }}
+          onClick={() => onChange(type)}
         >
           {type}
         </a>
